@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('./partials/bootstrap')%> <%-include('./partials/header.ejs')%>
+  <body>
+    <%-include('./partials/nav.ejs')%>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Ongoing Auctions</h1>
+          <form action="/search" method="get">
+            <input
+              id="search"
+              name="search"
+              type="text"
+              placeholder="Filter by recruiter,location, job, price, quantity, date"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <head>
+              <tr>
+                <th>
+                  <label for="recruiter-name">Recruiter Name</label>
+                </th>
+                <th>
+                  <label for="role">Role</label>
+                </th>
+                <th><label for="company">Company</label></th>
+                <th><label for="location">Location</label></th>
+                <th>
+                  <label for="job-description">Job Description</label>
+                </th>
+                <th><label for="salary">Salary</label></th>
+                <th><label for="quantity">Vacancies</label></th>
+                <th><label for="job-category">Job Category</label></th>
+                <th><label for="start-date">Start Date</label></th>
+                <th><label for="end-date">End Date</label></th>
+              </tr>
+            </head>
+            <%if(jobs.length>=1){%> <%jobs.forEach(job=>{ %>
+            <tr>
+              <div class="rows">
+                <tr>
+                  <div class="rows">
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.recruiterName%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.role%></a>
+                    </th>
+                    <th><a href="/jobs/<%=job._id%>"><%=job.company%></a></th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.location%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.description%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.salary%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.vacancies%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.category%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.startDate%></a>
+                    </th>
+                    <th>
+                      <a href="/jobs/<%=job._id%>"><%=job.duration%></a>
+                    </th>
+                  </div>
+                </tr>
+              </div>
+            </tr>
+            <%})}%>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

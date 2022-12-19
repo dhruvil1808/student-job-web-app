@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('./partials/bootstrap')%> <%-include('./partials/header.ejs')%>
+  <script>
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+  <body>
+    <%-include('./partials/nav2.ejs')%>
+    <div class="sell">
+      <h2 class="Alert"><%=alrt%></h2>
+      <form action="/post-job" method="POST">
+        <table>
+          <head>
+            <tr>
+              <th>
+                <label for="name">Role</label>
+              </th>
+              <th><label for="company">Company</label></th>
+              <th>
+                <label for="description">Job Description</label>
+              </th>
+              <th><label for="price">Salary</label></th>
+              <th><label for="quantity">Vacancies</label></th>
+            </tr>
+          </head>
+          <tr>
+            <th>
+              <input type="text" id="role" name="role" placeholder="Role" />
+            </th>
+            <th>
+              <input
+                type="text"
+                id="company"
+                name="company"
+                placeholder="Company"
+              />
+            </th>
+            <th>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Job Description"
+              />
+            </th>
+            <th>
+              <input
+                type="text"
+                id="salary"
+                name="salary"
+                placeholder="Salary"
+              />
+            </th>
+            <th>
+              <input
+                type="text"
+                id="vacancies"
+                name="vacancies"
+                placeholder="Vacancies"
+              />
+            </th>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th><label for="category">Job Category</label></th>
+            <th><label for="start-date">Start Date</label></th>
+            <th><label for="duration">Duration</label></th>
+          </tr>
+          <tr>
+            <th>
+              <select id="category" name="category">
+                <option value="">Select Category</option>
+                <option value="fulltime">Full Time</option>
+                <option value="parttime">Part Time</option>
+                <option value="internship">internship</option>
+                <option value="freelance">Freelance</option>
+              </select>
+            </th>
+            <th>
+              <input
+                type="date"
+                id="startDate"
+                name="startDate"
+                placeholder="Start Date"
+              />
+            </th>
+            <th>
+              <input
+                type="text"
+                id="duration"
+                name="duration"
+                placeholder="Duration"
+              />
+            </th>
+            <th><input onclick="date_validation()" type="submit" /></th>
+          </tr>
+          <tr>
+            <th>Required Skills</th>
+            <th>Required Experience</th>
+            <th>Location</th>
+          </tr>
+          <tr>
+            <th>
+              <div class="dropdown">
+                <select
+                  onclick="myFunction()"
+                  class="dropbtn"
+                  name="skills"
+                  id="skills"
+                  multiple
+                >
+                  <option href="#HTML" value="HTML">HTML</option>
+                  <option href="#CSS" value="CSS">CSS</option>
+                  <option href="#JavaScript" value="JavaScript">
+                    JavaScript
+                  </option>
+                  <option href="#PHP" value="PHP">PHP</option>
+                  <option href="#Python" value="Python">Python</option>
+                  <option href="#Java" value="Java">Java</option>
+                  <option href="#C++" value="C++">C++</option>
+                  <option href="#C#" value="C#">C#</option>
+                  <option href="#C" value="C">C</option>
+                  <option href="#Ruby" value="Ruby">Ruby</option>
+                  <option href="#Swift" value="Swift">Swift</option>
+                  <option href="#Go" value="Go">Go</option>
+                  <option href="#R" value="R">R</option>
+                  <option href="#SQL" value="SQL">SQL</option>
+                  <option href="#Perl" value="Perl">Perl</option>
+                  <option href="#Scala" value="Scala">Scala</option>
+                  <option href="#Kotlin" value="Kotlin">Kotlin</option>
+                  <option href="#Rust" value="Rust">Rust</option>
+                  <option href="#Dart" value="Dart">Dart</option>
+                  <option href="#Objective-C" value="Objective-C">
+                    Objective-C
+                  </option>
+                  <option href="#Matlab" value="Matlab">Matlab</option>
+                  <option href="#AI" value="Artificial Intelligence">
+                    Artificial Intelligence
+                  </option>
+                  <option href="#ML" value="Machine Learning">
+                    Machine Learning
+                  </option>
+                  <option href="#DL" value="Deep Learning">
+                    Deep Learning
+                  </option>
+                  <option href="#NLP" value="Natural Language Processing">
+                    Natural Language Processing
+                  </option>
+                  <option href="#CV" value="Computer Vision">
+                    Computer Vision
+                  </option>
+                </select>
+              </div>
+            </th>
+            <th>
+              <select name="experience" id="experience">
+                <option value="less than 1year">Less than 1year</option>
+                <option value="1-2 years">1-2 years</option>
+                <option value="2-3 years">2-3 years</option>
+                <option value="3-4 years">3-4 years</option>
+                <option value="4-5 years">4-5 years</option>
+                <option value="Greater than 5 years">
+                  Greater than 5 years
+                </option>
+              </select>
+            </th>
+            <th>
+              <input
+                type="text"
+                id="location"
+                name="location"
+                placeholder="Location"
+              />
+            </th>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <form action="/post-search" method="get">
+      <input
+        id="search"
+        name="search"
+        type="text"
+        placeholder="Filter by state, job, price, quantity, date"
+      />
+    </form>
+    <br />
+    <div class="listings">
+      <table id="table2">
+        <head>
+          <tr>
+            <th>
+              <label for="seller-name">Recruiter Name</label>
+            </th>
+            <th>
+              <label for="job-name">Role</label>
+            </th>
+            <th><label for="company">Company</label></th>
+            <th><label for="state">Location</label></th>
+            <th>
+              <label for="job-description">Job Description</label>
+            </th>
+            <th><label for="Base-price">Salary</label></th>
+            <th><label for="quantity">Vacancies</label></th>
+            <th><label for="job-category">Job Category</label></th>
+            <th><label for="start-date">Start Date</label></th>
+            <th><label for="end-date">Duration</label></th>
+          </tr>
+        </head>
+
+        <%if(jobs.length>=1){%> <%jobs.forEach(job=>{ %>
+        <tr>
+          <div class="rows">
+            <th>
+              <a href="/recruiterjobs/<%=job._id%>"><%=job.recruiterName%></a>
+            </th>
+            <th><a href="/recruiterjobs/<%=job._id%>"><%=job.role%></a></th>
+            <th><a href="/recruiterjobs/<%=job._id%>"></a><%=job.company%></th>
+            <th><a href="/recruiterjobs/<%=job._id%>"><%=job.location%></a></th>
+            <th>
+              <a href="/recruiterjobs/<%=job._id%>"><%=job.description%></a>
+            </th>
+            <th><a href="/recruiterjobs/<%=job._id%>"><%=job.salary%></a></th>
+            <th>
+              <a href="/recruiterjobs/<%=job._id%>"><%=job.vacancies%></a>
+            </th>
+            <th><a href="/recruiterjobs/<%=job._id%>"><%=job.category%></a></th>
+            <th>
+              <a href="/recruiterjobs/<%=job._id%>"><%=job.startDate%></a>
+            </th>
+            <th><a href="/recruiterjobs/<%=job._id%>"><%=job.duration%></a></th>
+          </div>
+        </tr>
+        <%})}%>
+      </table>
+    </div>
+    <script src="/validate.js"></script>
+  </body>
+</html>

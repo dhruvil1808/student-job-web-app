@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('./partials/bootstrap')%> <%-include('./partials/header.ejs')%>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var val = $(".username").text();
+      if (val != "Applicants") {
+        $(".hide").hide();
+      }
+    });
+  </script>
+  <body>
+    <%-include('./partials/nav2.ejs')%>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="Alert"><%=alrt%></h2>
+          <table class="table table-striped">
+            <head>
+              <tr>
+                <th>
+                  <label for="seller-name">Recruiter Name</label>
+                </th>
+                <th>
+                  <label for="crop-name">Role</label>
+                </th>
+                <th><label for="state">Location</label></th>
+                <th>
+                  <label for="crop-description">Job Description</label>
+                </th>
+                <th><label for="Base-price">Salary</label></th>
+                <th><label for="quantity">Vacancies</label></th>
+                <th><label for="crop-category">Job Category</label></th>
+                <th><label for="start-date">Start Date</label></th>
+                <th><label for="end-date">Duration</label></th>
+                <th class="hide">
+                  <label for="applicant">Your applicant</label>
+                </th>
+              </tr>
+            </head>
+            <form action="/apply-job/<%=job._id%>" method="post">
+              <tr>
+                <div class="rows">
+                  <th><%=job.recruiterName%></th>
+                  <th><%=job.role%></th>
+                  <th><%=job.location%></th>
+                  <th><%=job.description%></th>
+                  <th><%=job.salary%></th>
+                  <th><%=job.vacancies%></th>
+                  <th><%=job.category%></th>
+                  <th><%=job.startDate%></th>
+                  <th><%=job.duration%></th>
+                  <th class="hide">
+                    <button>apply</button>
+                  </th>
+                </div>
+              </tr>
+            </form>
+          </table>
+          <table>
+            <tr>
+              <th><label for="Buyer Name">Applier Name</label></th>
+            </tr>
+            <%if(applicants.length>0){%><%applicants.forEach(applicant=>{ %>
+            <tr>
+              <td><%=applicant.student%></td>
+            </tr>
+            <%})} else{%>
+            <tr>
+              <td>No applicants</td>
+            </tr>
+            <%}%>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%-include('./partials/bootstrap.ejs')%> <%-include('./partials/header.ejs')%>
+
+  <body>
+    <%-include("./partials/nav.ejs")%>
+    <div class="create-user">
+      <form action="/createStudent" method="POST" id="regForm">
+        <div class="tab">
+          <ul>
+            <li><h3>General</h3></li>
+            <li><label for="name">Name</label></li>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              oninput="this.className = ''"
+              required
+            />
+            <li><label for="email">Email Id</label></li>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              oninput="this.className = ''"
+              required
+            />
+            <li><label for="pno">Phone Number</label></li>
+            <input
+              type="text"
+              id="pno"
+              name="pno"
+              oninput="this.className = ''"
+              required
+            />
+            <li><label for="dob">Date of Birth</label></li>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              oninput="this.className = ''"
+              required
+            />
+            <li><label for="aadhar">Aadhar Number</label></li>
+            <input
+              type="text"
+              id="aadhar"
+              name="aadhar"
+              oninput="this.className = ''"
+              required
+            />
+          </ul>
+        </div>
+        <div class="tab">
+          <ul>
+            <li><h3>School</h3></li>
+            <li><label for="school">School</label></li>
+            <input type="text" id="school" name="school" />
+            <li><label for="board">Board</label></li>
+            <input type="text" id="board" name="board" />
+            <li><label for="state">State</label></li>
+            <input type="text" id="state" name="state" />
+            <li><label for="tenth">10th %</label></li>
+            <input type="text" id="marks10" name="marks10" />
+            <li><label for="tewlve">12th%</label></li>
+            <input type="text" id="marks12" name="marks12" />
+          </ul>
+        </div>
+        <div class="tab">
+          <li><h3>College</h3></li>
+          <ul>
+            <ul>
+              <li>
+                <label for="college">College</label>
+              </li>
+              <input type="text" id="college" name="college" />
+              <li>
+                <label for="cgpa">CGPA</label>
+              </li>
+              <input type="text" id="cgpa" name="cgpa" />
+              <li>
+                <label for="branch">Branch</label>
+              </li>
+              <input type="text" id="branch" name="branch" />
+              <li>
+                <label for="year">Year</label>
+              </li>
+              <input type="text" id="year" name="year" />
+            </ul>
+          </ul>
+        </div>
+        <div class="tab">
+          <ul>
+            <li><h3>Password</h3></li>
+            <li><label for="password">Password</label></li>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              oninput="this.className = ''"
+              required
+            />
+            <li><label for="c-password">Confirm Password</label></li>
+            <input
+              type="password"
+              id="c-password"
+              name="c-password"
+              oninput="this.className = ''"
+              required
+            />
+          </ul>
+        </div>
+        <div style="overflow: auto">
+          <div style="float: right">
+            <li>
+              <button type="button" id="prevBtn" onclick="nextPrev(-1)">
+                Previous
+              </button>
+              <button type="button" id="nextBtn" onclick="nextPrev(1)">
+                Next
+              </button>
+            </li>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px">
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+          <span class="step"></span>
+        </div>
+        <li><a href="/">Already have an account?</a></li>
+      </form>
+    </div>
+    <script src="/multipage.js"></script>
+  </body>
+</html>
