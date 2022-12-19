@@ -1,4 +1,4 @@
-# Horizon1
- Horizon1 is a project made to help farmers sell their produce easily.
- It also helps buyers buy fresh and natural products directly from the farmers.
- for this projest We have used NodeJs, ExpressJs, MongoDB, EJS 
+# Student Job Web App
+
+This project is made to connect students to recruiters that wanna recruit some people for a certain job.
+Recruiters can add job specifications and students can apply for those jobs.
